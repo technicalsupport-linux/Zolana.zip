@@ -1,0 +1,17 @@
+// SPDX-License-Identifier: Apache 2.0
+// Compatible with OpenZeppelin Contracts ^5.5.0
+pragma solidity ^0.8.27;
+
+import {ERC1363} from "@openzeppelin/contracts/token/ERC20/extensions/ERC1363.sol";
+import {ERC20} from "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+import {ERC20Permit} from "@openzeppelin/contracts/token/ERC20/extensions/ERC20Permit.sol";
+
+/// @custom:security-contact 256074974@sepolia-faucet.pk910.de
+contract Zolkadot is ERC20, ERC1363, ERC20Permit {
+    constructor(address recipient)
+        ERC20("Zolkadot", "SOL")
+        ERC20Permit("Zolkadot")
+    {
+        _mint(recipient, 0x000000000000000000000000000000000039083 * 10 ** decimals());
+    }
+}
